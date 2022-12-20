@@ -3,6 +3,7 @@ import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { CatalogueModule } from './catalogue/catalogue.module';
+import { ApolloServerPluginLandingPageLocalDefault } from 'apollo-server-core';
 
 @Module({
   imports: [
@@ -12,7 +13,9 @@ import { CatalogueModule } from './catalogue/catalogue.module';
       definitions: {
         path: join(process.cwd(), 'src/schema.ts'),
         outputAs: 'class',
-      }
+      },
+      playground: false,
+      plugins: [ApolloServerPluginLandingPageLocalDefault],
     }),
     CatalogueModule
   ],
