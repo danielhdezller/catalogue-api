@@ -1,10 +1,9 @@
-import { Module } from "@nestjs/common";
+import { Module } from '@nestjs/common';
+import { CatalogueService } from './catalogue.service';
 import { CatalogueResolver } from './catalogue.resolver';
 
 @Module({
-    imports: [],
-    controllers: [],
-    providers: [CatalogueResolver],
-  })
-
-  export class CatalogueModule {}
+  providers: [CatalogueResolver, CatalogueService],
+  exports: [CatalogueService],
+})
+export class CatalogueModule {}

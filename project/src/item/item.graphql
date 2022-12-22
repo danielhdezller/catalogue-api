@@ -1,0 +1,27 @@
+type Item {
+  id: Int!
+  name: String!
+  catalogue: Catalogue
+}
+
+input CreateItemInput {
+  name: String!
+  catalogueId: Int
+}
+
+input UpdateItemInput {
+  id: Int!
+  name: String!
+  catalogueId: Int
+}
+
+type Query {
+  items: [Item]!
+  item(id: Int!): Item
+}
+
+type Mutation {
+  createItem(createItemInput: CreateItemInput!): Item!
+  updateItem(updateItemInput: UpdateItemInput!): Item!
+  removeItem(id: Int!): Item
+}
