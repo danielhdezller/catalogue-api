@@ -1,7 +1,0 @@
-type Catalogue {
-name: String
-}
-
-type Query {
-  catalogue(id: Int!): Catalogue
-}

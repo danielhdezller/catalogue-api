@@ -1,0 +1,25 @@
+type Catalogue {
+  id: Int!
+  name: String!
+  items: [Item]
+}
+
+input CreateCatalogueInput {
+  name: String!
+}
+
+input UpdateCatalogueInput {
+  id: Int!
+  name: String!
+}
+
+type Query {
+  catalogs: [Catalogue]!
+  catalogue(id: Int!): Catalogue
+}
+
+type Mutation {
+  createCatalogue(createCatalogueInput: CreateCatalogueInput!): Catalogue!
+  updateCatalogue(updateCatalogueInput: UpdateCatalogueInput!): Catalogue!
+  removeCatalogue(id: Int!): Catalogue
+}
