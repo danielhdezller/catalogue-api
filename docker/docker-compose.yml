@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+
+  postgress-catalogue:
+    image: postgres:14.1
+    container_name: backend-db
+    command: ["postgres", "-c", "log_statement=${DB_LOG_LEVEL:-all}"]
+    restart: "no"
+    ports:
+      - ${NODE_DEBUGGER_PORT:-5432}:5432
+      - ${SERVER_PORT:-300}:3000
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER:-CatalogueAppUser}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-CatalogueAppUserSecret}
+      - POSTGRES_DB=${POSTGRES_DB:-Catalogue}
