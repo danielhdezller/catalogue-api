@@ -27,6 +27,6 @@ model Item {
 
 model Account {
   id       Int    @id @default(autoincrement())
-  email    String
+  email    String @unique
   password String
 }

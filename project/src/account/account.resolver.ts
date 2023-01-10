@@ -19,7 +19,7 @@ export class AccountResolver {
 
   @Query('account')
   findOne(@Args('id') id: number) {
-    return this.accountService.findOne(id);
+    return this.accountService.findOneById(id);
   }
 
   @Mutation('updateAccount')

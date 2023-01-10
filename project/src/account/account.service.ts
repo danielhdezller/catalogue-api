@@ -20,9 +20,15 @@ export class AccountService {
     return this.prisma.account.findMany();
   }
 
-  findOne(id: number) {
+  findOneById(id: number) {
     return this.prisma.account.findUnique({
       where: { id },
+    });
+  }
+
+  findOneByEmail(email: string) {
+    return this.prisma.account.findUnique({
+      where: { email },
     });
   }
 
