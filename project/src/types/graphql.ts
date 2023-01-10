@@ -8,6 +8,15 @@
 /* tslint:disable */
 /* eslint-disable */
 
+export class CreateAccountInput {
+    email?: Nullable<string>;
+    password?: Nullable<string>;
+}
+
+export class UpdateAccountInput {
+    id: number;
+}
+
 export class CreateCatalogueInput {
     name: string;
 }
@@ -28,13 +37,17 @@ export class UpdateItemInput {
     catalogueId?: Nullable<number>;
 }
 
-export class Catalogue {
+export class Account {
     id: number;
-    name: string;
-    items?: Nullable<Nullable<Item>[]>;
+    email: string;
+    password: string;
 }
 
 export abstract class IQuery {
+    abstract accounts(): Nullable<Account>[] | Promise<Nullable<Account>[]>;
+
+    abstract account(id: number): Nullable<Account> | Promise<Nullable<Account>>;
+
     abstract catalogs(): Nullable<Catalogue>[] | Promise<Nullable<Catalogue>[]>;
 
     abstract catalogue(id: number): Nullable<Catalogue> | Promise<Nullable<Catalogue>>;
@@ -45,6 +58,12 @@ export abstract class IQuery {
 }
 
 export abstract class IMutation {
+    abstract createAccount(createAccountInput: CreateAccountInput): Account | Promise<Account>;
+
+    abstract updateAccount(updateAccountInput: UpdateAccountInput): Account | Promise<Account>;
+
+    abstract removeAccount(id: number): Nullable<Account> | Promise<Nullable<Account>>;
+
     abstract createCatalogue(createCatalogueInput: CreateCatalogueInput): Catalogue | Promise<Catalogue>;
 
     abstract updateCatalogue(updateCatalogueInput: UpdateCatalogueInput): Catalogue | Promise<Catalogue>;
@@ -56,6 +75,12 @@ export abstract class IMutation {
     abstract updateItem(updateItemInput: UpdateItemInput): Item | Promise<Item>;
 
     abstract removeItem(id: number): Nullable<Item> | Promise<Nullable<Item>>;
+}
+
+export class Catalogue {
+    id: number;
+    name: string;
+    items?: Nullable<Nullable<Item>[]>;
 }
 
 export class Item {

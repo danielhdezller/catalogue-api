@@ -24,3 +24,9 @@ model Item {
   catalogueId Int?
   catalogue   Catalogue? @relation(fields: [catalogueId], references: [id], onDelete: Cascade, onUpdate: Cascade)
 }
+
+model Account {
+  id       Int    @id @default(autoincrement())
+  email    String
+  password String
+}

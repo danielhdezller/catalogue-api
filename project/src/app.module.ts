@@ -6,6 +6,7 @@ import { ApolloServerPluginLandingPageLocalDefault } from 'apollo-server-core';
 import { PrismaModule } from './prisma/prisma.module';
 import { CatalogueModule } from './catalogue/catalogue.module';
 import { ItemModule } from './item/item.module';
+import { AccountModule } from './account/account.module';
 
 @Module({
   imports: [
@@ -22,6 +23,7 @@ import { ItemModule } from './item/item.module';
     PrismaModule,
     CatalogueModule,
     ItemModule,
+    AccountModule,
   ],
   controllers: [],
   providers: [],
